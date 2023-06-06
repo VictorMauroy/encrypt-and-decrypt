@@ -40,9 +40,9 @@ def decrypt_message(message_to_decrypt:str) -> str :
         character_frequency_dict = {}
         for character in range(i, len(message_to_decrypt), 4) :
             try :
-                character_frequency_dict[character] += 1
+                character_frequency_dict[message_to_decrypt[character]] += 1
             except :
-                character_frequency_dict[character] = 1
+                character_frequency_dict[message_to_decrypt[character]] = 1
 
         max_count = 0
         most_frequent_char = ""
@@ -53,8 +53,7 @@ def decrypt_message(message_to_decrypt:str) -> str :
 
         space_char_difference = ord(most_frequent_char) - ord(" ")
         decrypted_key.append(space_char_difference)
-
-    decipher_message(message_to_decrypt, decrypted_key)
+    return decipher_message(message_to_decrypt, decrypted_key)
 
 """my_enciphered_message = encipher_message(MY_MESSAGE, my_key)
 print(my_enciphered_message)
