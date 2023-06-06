@@ -24,6 +24,10 @@ def decipher_message(message_to_decipher:str, key:int) -> str :
     Returns:
         str: deciphered message
     """
+
+    # Correction : it is also possible to call "encipher_message(message, -key)"
+    # Cela va inverser la clé et donc... directement déchiffrer
+
     deciphered_message = ""
     for i in range(len(message_to_decipher)) :
         deciphered_message += chr(ord(message_to_decipher[i]) - key)

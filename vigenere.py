@@ -25,12 +25,17 @@ def encipher_message(message_to_encipher:str, key:list) -> str :
 
 def decipher_message(message_to_decipher:str, key:list) -> str :
     """Decipher a given message by using the given key and return the result"""
+    
+    # Correction : also possible to do : 
+    # return encipher_message(message, [-elt for elt in key])
+    
     deciphered_message = ""
     key_index = 0
     for i in range(len(message_to_decipher)) :
         deciphered_message += chr(ord(message_to_decipher[i]) - key[key_index])
         key_index += 1
         if(key_index == len(key)) : key_index = 0
+        # Or : key_index = key_index % 4
     return deciphered_message
 
 def decrypt_message(message_to_decrypt:str) -> str :
@@ -62,3 +67,9 @@ print(my_deciphered_message)"""
 
 long_crypted_message = encipher_message(MY_VERY_LOOOOOOOOONG_MESSAGE, my_key)
 print(decrypt_message(long_crypted_message))
+
+# Pour décrypter des clés dont on ne connaît pas la taille (liste de 10 par exemple)
+# Il faut réaliser une analyse de fréquence qui grandit progressivement et renvoyer le résultat
+# à chaque fois.
+# Conseil : ne pas dépasser 1/4 de la taille de la chaîne de caractères sinon les résultats
+# sont trop instables.
